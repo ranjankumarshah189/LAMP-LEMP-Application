@@ -1,0 +1,32 @@
+server {
+    listen 80;
+    server_name demo.shivm04.xyz;
+
+    # Redirect HTTP to HTTPS
+    return 301 https://$host$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    server_name demo.shivm04.xyz;
+
+    ssl_certificate /path/to/your/certificate.crt;
+    ssl_certificate_key /path/to/your/certificate.key;
+
+    location / {
+        proxy_pass http://apache_server_ip:80;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+
+    access_log /var/log/nginx/demo.shivm04.xyz.access.log;
+    error_log /var/log/nginx/demo.shivm04.xyz.error.log;
+}
+
+
+
+
+
+
+

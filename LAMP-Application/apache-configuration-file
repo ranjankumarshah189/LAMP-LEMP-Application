@@ -1,0 +1,14 @@
+# this below configration file is dedicated for the port 80 only we have not added the port 443 configration
+
+<VirtualHost *:80>
+  ServerAdmin webmaster@shivm04.xyz 
+  ServerName  demo.shivm04.xyz         
+  ServerAlias demo.shivm04.xyz          
+
+
+  DirectoryIndex index.php               
+  DocumentRoot /var/www/html/             
+  LogLevel warn
+  ErrorLog  /var/log/apache2/your-website-name/error.log                  
+  CustomLog /var/log/apache2/your-website-name/access.log combined
+</VirtualHost>
